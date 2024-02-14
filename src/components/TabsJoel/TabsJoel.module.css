@@ -1,0 +1,30 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.tabsHeadersRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.tabHeader {
+    padding: 5px;
+    background-color: violet;
+    transition: background-color 0.5s ease;
+    color:white;
+    font-size: x-large;
+    cursor: pointer;
+    border: 1px solid black;
+}
+
+.tabHeader:hover {
+    opacity: 0.8;
+}
+
+.tabHeader.selected {
+    background-color: greenyellow;
+}

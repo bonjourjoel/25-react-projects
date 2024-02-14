@@ -1,0 +1,15 @@
+.treeNodeContainer {
+    display: block;
+}
+
+.nodeItemContainer {
+    padding: 5px;
+    font-size: larger;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.nodeChildrenContainer {
+    display: block;
+}

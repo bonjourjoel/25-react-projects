@@ -1,0 +1,10 @@
+.stars-container {
+    display: flew;
+    flex-direction: row;
+    cursor: pointer;
+}
+
+.stars-container > img {
+    width: 50px;
+    height: 50px;
+}

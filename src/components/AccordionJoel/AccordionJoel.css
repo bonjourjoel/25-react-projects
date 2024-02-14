@@ -1,0 +1,35 @@
+.accordeon-options {
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+
+.accordeon-container {
+    width: 300px;
+}
+
+.accordeon-item-container {
+    font-size: large;
+}
+
+.accordeon-item-title-row {
+    background-color: bisque;
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+    justify-content: space-between;
+}
+
+.accordeon-item-title-caption {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+.accordeon-item-title-togglebutton {
+    justify-self: flex-end;
+    font-weight: bold;
+    width: 30px;
+}
+
+.accordeon-item-text {
+    padding-left: 20px;
+}

@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.table {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.productCard {
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px black;
+}
+
+.productCardImage {
+    width:250px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.productCardTitle {
+    text-align: center;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.btnLoadMore {
+    font-size: x-large;
+    width: fit-content;
+    margin: auto;
+}

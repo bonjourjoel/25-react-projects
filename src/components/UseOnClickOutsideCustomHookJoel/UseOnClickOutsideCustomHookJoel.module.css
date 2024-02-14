@@ -1,0 +1,18 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.inside {
+    margin: 0;
+    padding: 20px;
+    background-color: beige;
+}
+
+.outside {
+    margin: 0;
+    padding: 20px;
+    background-color: plum;
+}
+
