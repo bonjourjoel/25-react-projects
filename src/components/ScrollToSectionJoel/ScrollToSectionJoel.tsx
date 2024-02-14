@@ -1,13 +1,21 @@
 import { ChangeEvent, useRef, useState } from "react";
 import css from "./ScrollToSectionJoel.module.css";
 
+const COLORS = [
+  "pink",
+  "green",
+  "blue",
+  "yellow",
+  "red",
+];
+
 export default function ScrollToSectionJoel() {
     const [selectedSection, setSelectedSection] = useState('');
     const sectionsRefMap = useRef(new Map<string|undefined, HTMLElement|null>());
 
     function setRef(element: HTMLElement|null) {
         if (element) {
-            sectionsRefMap.current.set(element?.id, element);
+            sectionsRefMap.current.set(element.id, element);
         }
     }
 
@@ -32,30 +40,16 @@ export default function ScrollToSectionJoel() {
                 onChange={(e: ChangeEvent<HTMLSelectElement>) => handleSelectedSectionChange(e.target.value)}
             >
                 <option value="">Scroll to section...</option>
-                {Array.from(sectionsRefMap.current.keys()).map(key => (
-                    <option key={key} value={key}>section {key}</option>
+                {COLORS.map(color => (
+                    <option key={color} value={color}>section {color}</option>
                 ))}
             </select>
-            <div id="pink" ref={setRef} className={css.section} style={{backgroundColor: 'pink'}}>
-                <p>&gt; Section pink &lt;</p>
+            {COLORS.map(color => (
+              <div id={color} ref={setRef} className={css.section} style={{backgroundColor: color}}>
+                <p>&gt; Section {color} &lt;</p>
                 <p><button onClick={handleScrollToTop}>Back to top</button></p>
-            </div>
-            <div id="green" ref={setRef} className={css.section} style={{backgroundColor: 'green'}}>
-                <p>&gt; Section green &lt;</p>
-                <p><button onClick={handleScrollToTop}>Back to top</button></p>
-            </div>
-            <div id="blue" ref={setRef} className={css.section} style={{backgroundColor: 'blue'}}>
-                <p>&gt; Section blue &lt;</p>
-                <p><button onClick={handleScrollToTop}>Back to top</button></p>
-            </div>
-            <div id="yellow" ref={setRef} className={css.section} style={{backgroundColor: 'yellow'}}>
-                <p>&gt; Section yellow &lt;</p>
-                <p><button onClick={handleScrollToTop}>Back to top</button></p>
-            </div>
-            <div id="red" ref={setRef} className={css.section} style={{backgroundColor: 'red'}}>
-                <p>&gt; Section red &lt;</p>
-                <p><button onClick={handleScrollToTop}>Back to top</button></p>
-            </div>
+              </div>
+            ))}
         </>
     );
 }
