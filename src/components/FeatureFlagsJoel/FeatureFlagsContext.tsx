@@ -7,12 +7,12 @@
 import { createContext, useContext, useState } from "react";
 
 type flags = {
-    hasAutoComplete: boolean;
-    hasAccordion: boolean;
-    hasPopup: boolean,
-    hasDarkMode: boolean;
-    hasTicTacToe: boolean;
-    hasScrollIndicator: boolean;
+  hasAutoComplete: boolean;
+  hasAccordion: boolean;
+  hasPopup: boolean;
+  hasDarkMode: boolean;
+  hasTicTacToe: boolean;
+  hasScrollIndicator: boolean;
 };
 
 /**
@@ -20,16 +20,16 @@ type flags = {
  */
 
 const initialState = {
-    flags: {
-        hasAutoComplete: true,
-        hasAccordion: true,
-        hasPopup: true,
-        hasDarkMode: true,
-        hasTicTacToe: true,
-        hasScrollIndicator: true,
-    },
-    setFlags: (_flags: flags) : void => {},
-}
+  flags: {
+    hasAutoComplete: true,
+    hasAccordion: true,
+    hasPopup: true,
+    hasDarkMode: true,
+    hasTicTacToe: true,
+    hasScrollIndicator: true,
+  },
+  setFlags: (_flags: flags): void => {},
+};
 const FeatureFlagsContext = createContext<typeof initialState | null>(null);
 
 /**
@@ -37,15 +37,15 @@ const FeatureFlagsContext = createContext<typeof initialState | null>(null);
  */
 
 export function FeatureFlagsContextProvider(props: {
-    children: React.JSX.Element[],
+  children: React.ReactNode;
 }) {
-    const [flags, setFlags] = useState<flags>(initialState.flags);
+  const [flags, setFlags] = useState<flags>(initialState.flags);
 
-    return (
-        <FeatureFlagsContext.Provider value={{flags, setFlags}}>
-            {props.children}
-        </FeatureFlagsContext.Provider>
-    );
+  return (
+    <FeatureFlagsContext.Provider value={{ flags, setFlags }}>
+      {props.children}
+    </FeatureFlagsContext.Provider>
+  );
 }
 
 /**
@@ -53,9 +53,11 @@ export function FeatureFlagsContextProvider(props: {
  */
 
 export function useFeatureFlagsContext() {
-    const themeContext = useContext(FeatureFlagsContext);
-    if (themeContext == null) {
-        throw new Error("useFeatureFlagsContext must be used within a ThemeProvider");
-    }
-    return themeContext;
+  const themeContext = useContext(FeatureFlagsContext);
+  if (themeContext == null) {
+    throw new Error(
+      "useFeatureFlagsContext must be used within a ThemeProvider"
+    );
+  }
+  return themeContext;
 }
