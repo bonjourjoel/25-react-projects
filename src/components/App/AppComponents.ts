@@ -40,7 +40,7 @@ import ScrollToTopBottomSolution from "../ScrollToTopBottomSolution/ScrollToTopB
 import ScrollToSectionSolution from "../ScrollToSectionSolution/ScrollToSectionSolution";
 import ScrollToSectionJoel from "../ScrollToSectionJoel/ScrollToSectionJoel";
 
-export const APP_COMPONENTS: Array<[string, () => React.JSX.Element]> = [
+export const APP_COMPONENTS: Array<[string, React.ElementType]> = [
   ["Home", Home],
   ["AccordionJoel", AccordionJoel],
   ["AccordionSolution", AccordionSolution],

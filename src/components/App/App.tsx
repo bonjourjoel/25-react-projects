@@ -12,17 +12,18 @@ import { APP_COMPONENTS } from "./AppComponents";
 const APPS: Array<{
   componentName: string;
   path: string;
-  component: () => React.JSX.Element;
-}> = APP_COMPONENTS.map(([componentName, component]) => ({
+  componentType: React.ElementType;
+}> = APP_COMPONENTS.map(([componentName, componentType]) => ({
   componentName: componentName,
   path: "/" + componentName.toLowerCase(),
-  component: component,
+  componentType: componentType,
 }));
 
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [appPath, setAppPath] = useState(location.pathname);
+  const [componentKey, setComponentKey] = useState(0);
 
   return (
     <>
@@ -52,7 +53,11 @@ function App() {
           ))}
         </select>
         &nbsp;
-        <button onClick={() => document.location.reload()}>Reload</button>
+        <button
+          onClick={() => setComponentKey(Math.floor(Math.random() * 10 ** 10))}
+        >
+          Reload
+        </button>
       </div>
       <hr />
       <Routes>
@@ -61,7 +66,7 @@ function App() {
           <Route
             key={app.path}
             path={app.path}
-            element={app.component()}
+            element={<app.componentType key={componentKey} />}
           ></Route>
         ))}
         <Route path="*" element={<div>Error 404 Not found</div>} />
