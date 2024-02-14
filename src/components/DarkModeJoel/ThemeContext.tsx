@@ -8,14 +8,14 @@ import useStateStored from "./useStateStored";
  */
 
 export enum THEME {
-    LIGHT = "LIGHT",
-    DARK = "DARK",
+  LIGHT = "LIGHT",
+  DARK = "DARK",
 }
 
 const THEME_DEFAULT = THEME.LIGHT;
 
 export function nextTheme(theme: THEME) {
-    return theme == THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
+  return theme == THEME.LIGHT ? THEME.DARK : THEME.LIGHT;
 }
 
 /**
@@ -23,11 +23,11 @@ export function nextTheme(theme: THEME) {
  */
 
 const initialState: {
-    theme: THEME,
-    setTheme: Dispatch<SetStateAction<THEME>>,
+  theme: THEME;
+  setTheme: Dispatch<SetStateAction<THEME>>;
 } = {
-    theme: THEME_DEFAULT,
-    setTheme: () => {},
+  theme: THEME_DEFAULT,
+  setTheme: () => {},
 };
 const ThemeContext = createContext<typeof initialState | null>(null);
 
@@ -35,18 +35,16 @@ const ThemeContext = createContext<typeof initialState | null>(null);
  * Context provider
  */
 
-export function ThemeContextProvider(props: {
-    children : React.JSX.Element[],
-}) {
-    // create state
-    const [theme, setTheme] = useStateStored<THEME>("#THEME", THEME_DEFAULT);
+export function ThemeContextProvider(props: { children: React.ReactNode }) {
+  // create state
+  const [theme, setTheme] = useStateStored<THEME>("#THEME", THEME_DEFAULT);
 
-    // create context provider
-    return (
-        <ThemeContext.Provider value={{theme, setTheme}}>
-            {props.children}
-        </ThemeContext.Provider>
-    );
+  // create context provider
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
 }
 
 /**
@@ -54,9 +52,9 @@ export function ThemeContextProvider(props: {
  */
 
 export function useTheme() {
-    const themeContext = useContext(ThemeContext);
-    if (themeContext == null) {
-        throw new Error("useTheme must be used within a ThemeProvider");
-    }
-    return themeContext;
+  const themeContext = useContext(ThemeContext);
+  if (themeContext == null) {
+    throw new Error("useTheme must be used within a ThemeProvider");
+  }
+  return themeContext;
 }
