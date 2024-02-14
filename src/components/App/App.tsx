@@ -15,7 +15,7 @@ const APPS: Array<{
   component: () => React.JSX.Element;
 }> = APP_COMPONENTS.map(([componentName, component]) => ({
   componentName: componentName,
-  path: "/" + component.prototype.constructor.name.toLowerCase(),
+  path: "/" + componentName.toLowerCase(),
   component: component,
 }));
 
